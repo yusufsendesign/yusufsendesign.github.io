@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yusuf Sen — UI/UX Designer & CMD Student</title>
+<meta name="description" content="Portfolio van Yusuf Sen, CMD-student met een focus op UI/UX design, conceptontwikkeling, prototyping en interactieve projecten.">
+<meta property="og:title" content="Yusuf Sen — UI/UX Designer & CMD Student">
+<meta property="og:description" content="Portfolio van Yusuf Sen, CMD-student met een focus op UI/UX design, conceptontwikkeling, prototyping en interactieve projecten.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yusufsendesign.github.io/">
+<meta property="og:image" content="https://yusufsendesign.github.io/images/moviesteps.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%232140E8%22/><text x=%2250%22 y=%2272%22 font-size=%2264%22 font-family=%22Arial%22 font-weight=%22bold%22 fill=%22%23F2EEE8%22 text-anchor=%22middle%22>Y</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800;900&family=Instrument+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2EEE8;
+  --ink:#121A38;
+  --royal:#2140E8;
+  --red:#E8442E;
+  --emerald:#17C57F;
+  --line:#DAD5CB;
+  --card:#FFFFFF;
+  --radius:16px;
+  --display:'Archivo',sans-serif;
+  --body:'Instrument Sans',sans-serif;
+  --mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+::selection{background:var(--emerald);color:var(--ink)}
+img{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* grain */
+body::after{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* custom cursor */
+.cursor{display:none}
+@media(hover:hover) and (pointer:fine){
+  .cursor{
+    display:block;position:fixed;top:0;left:0;width:10px;height:10px;border-radius:50%;
+    background:var(--royal);pointer-events:none;z-index:100;
+    transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s;
+    mix-blend-mode:multiply;
+  }
+  .cursor.grow{width:44px;height:44px;background:var(--emerald)}
+}
+
+/* ---------- Nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;
+  background:rgba(242,238,232,.86);backdrop-filter:blur(10px);
+  border-bottom:1.5px solid var(--ink);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--display);font-weight:900;font-size:1.15rem;text-decoration:none;letter-spacing:-.02em}
+.logo span{color:var(--royal)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{
+  text-decoration:none;font-family:var(--mono);font-size:.78rem;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:6px 2px;border-bottom:2px solid transparent;transition:border-color .2s;
+}
+.nav-links a:hover,.nav-links a:focus-visible{border-color:var(--royal)}
+.nav-cta{
+  font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;
+  background:var(--ink);color:var(--paper);text-decoration:none;
+  padding:10px 18px;border-radius:999px;transition:background .2s;
+}
+.nav-cta:hover{background:var(--royal)}
+@media(max-width:760px){.nav-links{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{padding:80px 0 64px;position:relative}
+.eyebrow{
+  font-family:var(--mono);font-size:.78rem;text-transform:uppercase;
+  letter-spacing:.14em;opacity:.65;margin-bottom:18px;display:block;
+}
+.hero h1{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2.6rem,7.5vw,5.6rem);
+  line-height:1;letter-spacing:-.03em;text-transform:uppercase;position:relative;z-index:2;
+  max-width:14ch;
+}
+.hero h1 .accent{color:var(--royal)}
+.role-swap{
+  display:inline-block;background:var(--emerald);padding:2px 16px;border-radius:10px;
+  transform:rotate(-1.2deg);box-shadow:4px 4px 0 var(--ink);white-space:nowrap;
+}
+.hero p.intro{max-width:560px;margin-top:26px;font-size:1.08rem}
+.skill-line{
+  font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;
+  opacity:.7;margin-top:18px;max-width:640px;
+}
+.skill-line b{color:var(--royal);font-weight:500}
+.hero-ctas{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+.btn{
+  font-family:var(--mono);font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;
+  text-decoration:none;padding:14px 26px;border-radius:999px;transition:.2s;
+  display:inline-flex;align-items:center;gap:8px;
+}
+.btn-primary{background:var(--royal);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.btn-primary:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn-ghost{border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--paper)}
+
+/* stickers */
+.sticker{
+  position:absolute;font-family:var(--mono);font-size:.7rem;text-transform:uppercase;
+  letter-spacing:.06em;padding:9px 16px;border:1.5px solid var(--ink);border-radius:999px;
+  background:var(--card);box-shadow:3px 3px 0 var(--ink);white-space:nowrap;z-index:3;
+  animation:wobble 5s ease-in-out infinite;
+}
+.st1{top:100px;right:6%;transform:rotate(6deg);background:var(--red);color:#fff}
+.st2{top:230px;right:14%;transform:rotate(-5deg);background:var(--emerald)}
+@media(max-width:900px){.sticker{display:none}}
+@keyframes wobble{0%,100%{translate:0 0}50%{translate:0 -8px}}
+
+/* rotating badge */
+.spin-badge{
+  position:absolute;right:5%;bottom:-10px;width:130px;height:130px;z-index:3;
+  animation:spin 14s linear infinite;
+}
+.spin-badge svg{width:100%;height:100%}
+.spin-badge text{
+  font-family:var(--mono);font-size:11.5px;text-transform:uppercase;letter-spacing:.18em;fill:var(--ink);
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:900px){.spin-badge{display:none}}
+
+/* ---------- Marquee ---------- */
+.marquee{
+  border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);
+  overflow:hidden;white-space:nowrap;padding:16px 0;background:var(--emerald);
+  transform:rotate(-1.4deg) scale(1.03);margin:34px 0;
+}
+.marquee-track{display:inline-block;animation:scroll 26s linear infinite}
+.marquee span{
+  font-family:var(--display);font-weight:900;font-size:1.05rem;text-transform:uppercase;
+  letter-spacing:.05em;margin:0 26px;
+}
+.marquee span::after{content:"✦";margin-left:26px;color:var(--royal)}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){
+  .marquee-track,.spin-badge,.sticker{animation:none}
+  html{scroll-behavior:auto}
+  .reveal{opacity:1!important;transform:none!important}
+}
+
+/* ---------- Sections ---------- */
+section{padding:96px 0}
+.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:48px;flex-wrap:wrap}
+h2{
+  font-family:var(--display);font-weight:900;
+  font-size:clamp(2.1rem,5.5vw,3.6rem);letter-spacing:-.02em;text-transform:uppercase;line-height:1;
+}
+h2 .accent{color:var(--royal)}
+.section-note{font-family:var(--mono);font-size:.8rem;opacity:.6;max-width:300px;text-align:right}
+@media(max-width:640px){.section-note{text-align:left}}
+
+/* ---------- Case study ---------- */
+.case{background:var(--ink);color:var(--paper);position:relative;overflow:hidden}
+.case .eyebrow{color:var(--red);opacity:1}
+.case h2{color:var(--paper)}
+.case-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;margin-top:12px}
+@media(max-width:900px){.case-grid{grid-template-columns:1fr}}
+.case-lede{font-size:1.15rem;max-width:520px}
+.case-facts{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.fact{
+  font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;
+  border:1px solid rgba(242,238,232,.35);border-radius:999px;padding:7px 14px;
+}
+.case-cta{margin-top:34px}
+.case .btn-primary{background:var(--emerald);color:var(--ink);box-shadow:4px 4px 0 var(--red)}
+.case .btn-primary:hover{box-shadow:6px 6px 0 var(--red)}
+
+/* phone mockup */
+.phone-wrap{display:flex;justify-content:center;position:relative}
+.phone{
+  width:290px;background:#0E1430;border-radius:38px;padding:12px;
+  border:2px solid rgba(242,238,232,.25);box-shadow:0 30px 70px rgba(0,0,0,.5);
+  transform:rotate(3deg);transition:transform .4s;
+}
+.phone:hover{transform:rotate(0deg) scale(1.02)}
+.screen{border-radius:28px;overflow:hidden;background:#141F4A}
+.screen img{width:100%;display:block}
+
+.process{margin-top:72px}
+.process-title{
+  font-family:var(--mono);font-size:.8rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--red);margin-bottom:30px;
+}
+.flow{position:relative;max-width:760px;padding-left:34px}
+.flow::before{
+  content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;
+  background:linear-gradient(180deg,var(--red),var(--royal));opacity:.8;
+}
+.flow-item{position:relative;padding-bottom:38px}
+.flow-item:last-child{padding-bottom:0}
+.flow-item::before{
+  content:"";position:absolute;left:-32px;top:7px;width:14px;height:14px;border-radius:50%;
+  background:var(--ink);border:3px solid var(--red);
+}
+.flow-item h3{font-family:var(--display);font-weight:800;font-size:1.15rem;margin-bottom:8px;text-transform:uppercase}
+.flow-item h3 .step-num{color:var(--red);font-family:var(--mono);font-size:.8rem;margin-right:8px;letter-spacing:.1em}
+.flow-item p{font-size:.97rem;opacity:.85;max-width:640px}
+.method-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.mtag{
+  font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;
+  border:1px solid rgba(242,238,232,.3);border-radius:999px;padding:5px 12px;color:var(--emerald);
+}
+/* inzicht -> beslissing blok */
+.insight{
+  margin-top:14px;border-left:3px solid var(--emerald);padding:10px 16px;
+  background:rgba(23,197,127,.07);border-radius:0 10px 10px 0;max-width:640px;
+}
+.insight strong{
+  font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;
+  color:var(--emerald);display:block;margin-bottom:3px;
+}
+.insight p{opacity:.9;font-size:.95rem}
+
+/* optionele beeldslots in de case (verbergen zichzelf als het bestand mist) */
+.case-visuals{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:56px}
+@media(max-width:760px){.case-visuals{grid-template-columns:1fr}}
+.case-visuals figure{margin:0}
+.case-visuals img{
+  width:100%;border-radius:14px;border:1.5px solid rgba(242,238,232,.25);
+}
+.case-visuals figcaption{
+  font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;
+  opacity:.6;margin-top:10px;
+}
+
+.features{margin-top:64px}
+.feature-list{display:grid;grid-template-columns:repeat(2,1fr);column-gap:48px;list-style:none}
+@media(max-width:700px){.feature-list{grid-template-columns:1fr}}
+.feature-list li{
+  display:flex;gap:14px;align-items:baseline;padding:13px 4px;
+  border-bottom:1px solid rgba(242,238,232,.14);font-size:.95rem;
+}
+.feature-list strong{font-family:var(--display);font-weight:800;text-transform:uppercase;font-size:.88rem;white-space:nowrap}
+.feature-list span{opacity:.75;font-size:.9rem}
+.case-result{
+  margin-top:56px;display:grid;grid-template-columns:1fr 1fr;gap:40px;
+  border-top:1px solid rgba(242,238,232,.18);padding-top:40px;
+}
+@media(max-width:800px){.case-result{grid-template-columns:1fr}}
+.case-result h3{font-family:var(--display);font-weight:800;font-size:1.4rem;margin-bottom:12px;text-transform:uppercase}
+.case-result p{opacity:.85}
+.case-result ul{list-style:none;opacity:.85}
+.case-result li{padding:6px 0 6px 22px;position:relative}
+.case-result li::before{content:"→";position:absolute;left:0;color:var(--emerald)}
+
+/* ---------- Projects ---------- */
+.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+@media(max-width:820px){.projects-grid{grid-template-columns:1fr}}
+.project{
+  background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  overflow:hidden;display:flex;flex-direction:column;transition:.28s;
+}
+.project:nth-child(odd){transform:rotate(-.4deg)}
+.project:nth-child(even){transform:rotate(.4deg)}
+.project:hover{transform:rotate(0) translateY(-6px);box-shadow:10px 10px 0 var(--royal)}
+.project.wide{grid-column:1 / -1}
+.cover{
+  aspect-ratio:16/9;position:relative;overflow:hidden;
+  border-bottom:2px solid var(--ink);background:var(--ink);
+}
+.cover img{width:100%;height:100%;object-fit:cover;object-position:top center;transition:transform .4s}
+.project:hover .cover img{transform:scale(1.04)}
+/* fallback: alleen de projectnaam als designed cover, geen instructietekst */
+.cover .cover-fallback{
+  position:absolute;inset:0;display:none;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;text-align:center;padding:20px;
+  background:
+    repeating-linear-gradient(-45deg,transparent 0 18px,rgba(242,238,232,.05) 18px 36px),
+    var(--ink);
+}
+.cover.noimg .cover-fallback{display:flex}
+.cover.noimg img{display:none}
+.cover-fallback .fb-title{
+  font-family:var(--display);font-weight:900;font-size:clamp(1.6rem,3.5vw,2.4rem);
+  text-transform:uppercase;letter-spacing:-.02em;color:var(--paper);
+}
+.cover-fallback .fb-sub{
+  font-family:var(--mono);font-size:.62rem;text-transform:uppercase;letter-spacing:.14em;
+  color:var(--emerald);
+}
+.cover.fb-royal .cover-fallback{background:repeating-linear-gradient(-45deg,transparent 0 18px,rgba(255,255,255,.07) 18px 36px),var(--royal)}
+.cover.fb-red .cover-fallback{background:repeating-linear-gradient(-45deg,transparent 0 18px,rgba(255,255,255,.09) 18px 36px),var(--red)}
+.cover.fb-red .fb-sub{color:#fff}
+.cover.fb-emerald .cover-fallback{background:repeating-linear-gradient(-45deg,transparent 0 18px,rgba(33,29,53,.07) 18px 36px),var(--emerald)}
+.cover.fb-emerald .fb-title{color:var(--ink)}
+.cover.fb-emerald .fb-sub{color:var(--royal)}
+
+/* voor/na strip in de Robotica kaart */
+.ba-pair{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;border-bottom:2px solid var(--ink);background:var(--ink);padding:18px}
+.ba-pair .shot{border-radius:10px;overflow:hidden;border:1.5px solid rgba(242,238,232,.3);position:relative}
+.ba-pair .shot img{width:100%;display:block}
+.ba-pair .ba-tag{
+  position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:.6rem;
+  text-transform:uppercase;letter-spacing:.1em;background:var(--ink);color:var(--paper);
+  padding:4px 10px;border-radius:999px;
+}
+.ba-pair .shot.na .ba-tag{background:var(--royal)}
+.ba-arrow{color:var(--emerald);font-size:1.6rem;font-weight:900}
+@media(max-width:640px){.ba-pair{grid-template-columns:1fr;justify-items:center}.ba-arrow{transform:rotate(90deg)}}
+
+.project-body{padding:24px 26px 28px;display:flex;flex-direction:column;gap:12px;flex:1}
+.project-meta{font-family:var(--mono);font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--royal)}
+.project h3{font-family:var(--display);font-weight:800;font-size:1.35rem;letter-spacing:-.01em}
+.project p{font-size:.95rem;opacity:.85}
+.change-cols{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:640px){.change-cols{grid-template-columns:1fr}}
+.change-cols h4{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--royal);margin-bottom:6px}
+.change-cols ul{list-style:none;font-size:.88rem;opacity:.85}
+.change-cols li{padding:3px 0 3px 18px;position:relative}
+.change-cols li::before{content:"→";position:absolute;left:0;color:var(--emerald)}
+.tags{display:flex;gap:8px;flex-wrap:wrap}
+.tag{
+  font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.05em;
+  border:1px solid var(--line);border-radius:999px;padding:5px 11px;background:var(--paper);
+}
+.project-link{
+  font-family:var(--mono);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;
+  text-decoration:none;color:var(--royal);margin-top:auto;display:inline-flex;gap:6px;align-items:center;font-weight:500;
+}
+.project-link:hover{text-decoration:underline}
+
+/* ---------- Buiten het scherm ---------- */
+.maker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:820px){.maker-grid{grid-template-columns:1fr}}
+.maker-card{
+  background:var(--card);border:2px solid var(--ink);border-radius:var(--radius);
+  padding:26px;transition:.25s;position:relative;
+}
+.maker-card:nth-child(1){transform:rotate(-.6deg)}
+.maker-card:nth-child(2){transform:rotate(.5deg)}
+.maker-card:nth-child(3){transform:rotate(-.4deg)}
+.maker-card:hover{transform:rotate(0) translateY(-5px);box-shadow:8px 8px 0 var(--emerald)}
+.maker-card .icon{font-size:1.6rem;margin-bottom:12px;display:block}
+.maker-card h3{font-family:var(--display);font-weight:800;font-size:1.1rem;text-transform:uppercase;margin-bottom:8px}
+.maker-card p{font-size:.92rem;opacity:.85}
+.maker-intro{max-width:620px;margin-bottom:40px;font-size:1.05rem}
+
+/* ---------- About ---------- */
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+@media(max-width:860px){.about-grid{grid-template-columns:1fr}}
+.about-text p{margin-bottom:18px;font-size:1.05rem}
+.about-text .big{
+  font-family:var(--display);font-weight:800;font-size:clamp(1.3rem,2.6vw,1.7rem);
+  line-height:1.3;letter-spacing:-.01em;margin-bottom:26px;
+}
+.about-text .big em{font-style:normal;background:var(--emerald);padding:0 8px;border-radius:6px;box-shadow:2px 2px 0 var(--ink)}
+.skill-list{display:flex;flex-direction:column}
+.skill{
+  display:flex;gap:16px;align-items:baseline;
+  padding:18px 10px;border-bottom:1.5px solid var(--ink);transition:.2s;
+}
+.skill:first-child{border-top:1.5px solid var(--ink)}
+.skill:hover{background:var(--card);padding-left:18px}
+.skill .num{font-family:var(--mono);font-size:.75rem;color:var(--red);letter-spacing:.05em;min-width:32px}
+.skill div{flex:1}
+.skill h3{font-family:var(--display);font-weight:800;font-size:1.05rem;text-transform:uppercase}
+.skill span{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;opacity:.6;display:block;margin-top:4px}
+.skill-extra{
+  margin-top:22px;font-family:var(--mono);font-size:.72rem;text-transform:uppercase;
+  letter-spacing:.06em;opacity:.55;line-height:2;
+}
+
+/* ---------- Contact ---------- */
+.contact{background:var(--royal);color:#fff;position:relative;overflow:hidden}
+.contact h2{color:#fff;font-size:clamp(2.6rem,8vw,5.5rem)}
+.contact p{max-width:520px;margin:20px 0 34px;font-size:1.1rem;opacity:.94}
+.contact .btn-primary{background:var(--emerald);color:var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.contact .btn-ghost{border-color:#fff;color:#fff}
+.contact .btn-ghost:hover{background:#fff;color:var(--royal)}
+.contact .eyebrow{color:var(--emerald);opacity:1}
+.contact .ghost-type{
+  position:absolute;bottom:-30px;right:-20px;font-family:var(--display);font-weight:900;
+  font-size:clamp(6rem,18vw,14rem);color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,.2);
+  text-transform:uppercase;pointer-events:none;line-height:1;white-space:nowrap;
+}
+
+footer{padding:28px 0;border-top:1.5px solid var(--ink)}
+.foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;opacity:.65}
+
+/* inzicht -> beslissing paar */
+.ipair{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin-top:16px;max-width:680px}
+@media(max-width:700px){.ipair{grid-template-columns:1fr}.ipair .parr{transform:rotate(90deg);justify-self:center}}
+.icard,.dcard{border-radius:12px;padding:14px 16px;font-size:.92rem;line-height:1.5}
+.icard{background:rgba(23,197,127,.08);border:1.5px solid var(--emerald)}
+.dcard{background:rgba(33,64,232,.14);border:1.5px solid var(--royal)}
+.icard strong,.dcard strong{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:4px}
+.icard strong{color:var(--emerald)}
+.dcard strong{color:#8FA1FF}
+.ipair .parr{align-self:center;color:var(--emerald);font-weight:900;font-size:1.3rem}
+/* iteratie loop */
+.loop{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:16px}
+.loop span{font-family:var(--mono);font-size:.66rem;text-transform:uppercase;letter-spacing:.06em;border:1px solid rgba(242,238,232,.35);border-radius:999px;padding:5px 12px}
+.loop .arr{border:none;color:var(--emerald);font-size:.9rem;padding:0}
+/* skill groepen */
+.skill-group{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.14em;color:var(--red);margin:26px 0 6px}
+.skill-list .skill-group:first-child{margin-top:0}
+.skill-group + .skill{border-top:1.5px solid var(--ink)}
+.sec-chips{display:flex;flex-wrap:wrap;gap:10px;padding:14px 0;border-bottom:1.5px solid var(--ink)}
+.schip{font-family:var(--mono);font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;border:1.5px solid var(--ink);border-radius:999px;padding:7px 14px;background:var(--card)}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<div class="cursor" id="cursor"></div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="logo" href="#top">Yusuf<span>.</span></a>
+    <ul class="nav-links">
+      <li><a href="#case">Case study</a></li>
+      <li><a href="#projecten">Projecten</a></li>
+      <li><a href="#maker">Buiten het scherm</a></li>
+      <li><a href="#over">Over mij</a></li>
+    </ul>
+    <a class="nav-cta" href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap" style="position:relative">
+    <span class="sticker st1">Brein: altijd aan ⚡</span>
+    <span class="sticker st2">100 ideeën p/u</span>
+    <span class="eyebrow">Yusuf Sen · CMD student · Den Haag</span>
+    <h1>Van idee naar <span class="role-swap accent" id="roleSwap" style="background:var(--emerald);color:var(--ink)">iets dat werkt.</span></h1>
+    <p class="intro">Ik ben Yusuf, CMD-student met een focus op UI/UX design. Ik hou van brainstormen, ontwerpen en itereren, en werk een idee net zo lang verder uit tot het echt ergens op lijkt.</p>
+    <p class="skill-line"><b>UI/UX Design</b> · Figma · Prototyping · UX Research · Conceptontwikkeling · Brainstorming · Iteratie · 3D / Physical Design</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="#case">Bekijk mijn beste werk ↓</a>
+      <a class="btn btn-ghost" href="#contact">Neem contact op</a>
+    </div>
+    <div class="spin-badge" aria-hidden="true">
+      <svg viewBox="0 0 130 130">
+        <defs><path id="circ" d="M65,65 m-48,0 a48,48 0 1,1 96,0 a48,48 0 1,1 -96,0"/></defs>
+        <text><textPath href="#circ">bedenken · maken · testen · verbeteren · </textPath></text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>UI/UX Design</span><span>Figma</span><span>Prototyping</span><span>UX Research</span><span>Conceptontwikkeling</span><span>Brainstorming</span><span>Iteratie</span><span>3D / Physical Design</span>
+  </div>
+</div>
+
+<section class="case" id="case">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Uitgelichte case study</span>
+        <h2>Movie<span style="color:var(--red)">steps</span></h2>
+      </div>
+      <p class="section-note">Schoolproject · Concept als team, daarna maakte iedereen zijn eigen app</p>
+    </div>
+    <div class="case-grid">
+      <div class="reveal">
+        <p class="case-lede">Je kent het wel: je kijkt een film en denkt "daar wil ik heen". Maar die locaties vinden is gedoe, alle info staat verspreid over blogs, sites en socials. MovieSteps brengt alles samen op één plek.</p>
+        <div class="case-facts">
+          <span class="fact">UX/UI Design</span>
+          <span class="fact">Mobile app</span>
+          <span class="fact">Figma</span>
+          <span class="fact">iOS & Android</span>
+          <span class="fact">Eigen design system</span>
+        </div>
+        <div class="case-cta">
+          <a class="btn btn-primary" href="https://www.figma.com/proto/SPmXLzTPWV8oh3hM3fg003/hi-fi-wip?node-id=0-1" target="_blank" rel="noopener">Open het prototype →</a>
+        </div>
+      </div>
+      <div class="phone-wrap reveal">
+        <div class="phone">
+          <div class="screen">
+            <img src="images/moviesteps.png" alt="Onboarding scherm van MovieSteps met de Cliffs of Moher">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="process reveal">
+      <p class="process-title">Hoe ik dacht, niet alleen wat ik maakte</p>
+      <div class="flow">
+        <div class="flow-item">
+          <h3><span class="step-num">01</span>Het probleem</h3>
+          <p>Filmlocaties bezoeken is populair, maar de informatie is versnipperd. Je zoekt in blogs, fora en socials, en plant je trip alsnog zelf bij elkaar. Er was geen plek die ontdekken, plannen en beleven combineert.</p>
+        </div>
+        <div class="flow-item">
+          <h3><span class="step-num">02</span>Onderzoek</h3>
+          <p>Om de doelgroep echt te snappen heb ik meerdere onderzoeksmethodes ingezet.</p>
+          <div class="method-tags">
+            <span class="mtag">User interviews</span>
+            <span class="mtag">Cultural probe</span>
+            <span class="mtag">Persona's</span>
+            <span class="mtag">User journey map</span>
+          </div>
+          <div class="ipair">
+            <div class="icard"><strong>Inzicht</strong>Gebruikers willen niet alleen filmlocaties vinden, maar vooral inspiratie voor een complete ervaring.</div>
+            <span class="parr">→</span>
+            <div class="dcard"><strong>Ontwerpbeslissing</strong>Daarom is MovieSteps geen locatie-database, maar een combinatie van ontdekken, plannen en beleven.</div>
+          </div>
+        </div>
+        <div class="flow-item">
+          <h3><span class="step-num">03</span>Concept</h3>
+          <p>Met het groepje van honderd ideeën naar één concept, met acceptatiecriteria en een stylescape als kader. Daarna ging iedereen zijn eigen versie van de app uitwerken: dit is de mijne.</p>
+        </div>
+        <div class="flow-item">
+          <h3><span class="step-num">04</span>Ontwerpen & itereren</h3>
+          <p>Mobile-first opgezet en geïtereerd op wireframes, flows en schermen. Voor het gedragsontwerp gebruikte ik het Fogg Behavior Model.</p>
+          <div class="ipair">
+            <div class="icard"><strong>Inzicht</strong>Mensen haken af zodra plannen te veel stappen kost.</div>
+            <span class="parr">→</span>
+            <div class="dcard"><strong>Ontwerpbeslissing</strong>Een locatie opslaan is één tik, en vanuit je wishlist bouw je in een paar stappen een route.</div>
+          </div>
+          <div class="loop" aria-label="Mijn iteratieproces">
+            <span>idee</span><span class="arr">→</span><span>proberen</span><span class="arr">→</span><span>feedback</span><span class="arr">→</span><span>aanpassen</span><span class="arr">→</span><span>opnieuw proberen</span>
+          </div>
+        </div>
+        <div class="flow-item">
+          <h3><span class="step-num">05</span>Final design & prototype</h3>
+          <p>Alles samengebracht in een volledig klikbaar hi-fi prototype, met een eigen design system en component library. Inclusief interface varianten voor zowel iOS als Android.</p>
+        </div>
+      </div>
+    </div>
+
+    <!--
+      OPTIONELE VISUALS: upload deze bestanden naar de map images/ in je repo en ze verschijnen vanzelf.
+      Bestaan ze niet, dan blijft dit blok onzichtbaar (geen kapotte plaatjes op de live site).
+      - images/moviesteps-wireframes.png  (wireframe naast hi-fi scherm)
+      - images/moviesteps-designsystem.png (componenten uit je design system)
+    -->
+    <div class="case-visuals">
+      <figure style="display:none">
+        <img src="images/moviesteps-wireframes.png" alt="Wireframes naast het hi-fi ontwerp van MovieSteps" loading="lazy" onload="this.parentElement.style.display='block'">
+        <figcaption>Van wireframe naar hi-fi</figcaption>
+      </figure>
+      <figure style="display:none">
+        <img src="images/moviesteps-designsystem.png" alt="Componenten uit het design system van MovieSteps" loading="lazy" onload="this.parentElement.style.display='block'">
+        <figcaption>Design system & componenten</figcaption>
+      </figure>
+    </div>
+
+    <div class="features reveal">
+      <p class="process-title">Wat zit er in de app</p>
+      <ul class="feature-list">
+        <li><strong>Onboarding</strong><span>korte flow die je voorkeuren leert kennen voor persoonlijke tips</span></li>
+        <li><strong>Ontdekken</strong><span>zoek filmlocaties op film, serie of land</span></li>
+        <li><strong>Routeplanner</strong><span>maak je eigen route langs meerdere locaties in één trip</span></li>
+        <li><strong>Camera experience</strong><span>ga op de juiste plek staan en maak dezelfde shot als in de film</span></li>
+        <li><strong>Favorieten</strong><span>bewaar locaties op je wishlist voor toekomstige trips</span></li>
+        <li><strong>Reisdagboek</strong><span>houd bij waar je bent geweest en upload je foto's</span></li>
+      </ul>
+    </div>
+
+    <div class="case-result reveal">
+      <div>
+        <h3>Het resultaat</h3>
+        <p>Een volledig klikbaar Figma prototype met alles erop en eraan: onboarding, zoeken, locatiepagina's, routeplanner, camera experience, reisdagboek en instellingen. Plus een eigen design system en component library.</p>
+      </div>
+      <div>
+        <h3>Wat ik ervan leerde</h3>
+        <ul>
+          <li>Keuzes die uit onderzoek komen maken je ontwerp aantoonbaar beter</li>
+          <li>Feedback vroeg ophalen scheelt grote aanpassingen achteraf</li>
+          <li>Een design system dwingt je om consistent te denken, niet per scherm</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projecten">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Mijn werk</span>
+        <h2>Meer <span class="accent">projecten.</span></h2>
+      </div>
+      <p class="section-note">Een selectie van schoolprojecten en persoonlijk werk.</p>
+    </div>
+    <div class="projects-grid">
+
+      <article class="project wide reveal">
+        <!--
+          GROEI-BLOK: upload images/robotica-voor.png en images/robotica-na.png (zelfde scherm, oude en nieuwe versie).
+          Zolang ze er niet zijn toont de kaart een nette cover met alleen de titel.
+        -->
+        <div class="ba-pair" id="baPair" style="display:none">
+          <div class="shot voor">
+            <span class="ba-tag">Mijn eerste versie</span>
+            <img src="images/robotica-voor.png" alt="Eerste versie van de Robotica 2030 app" loading="lazy">
+          </div>
+          <span class="ba-arrow">→</span>
+          <div class="shot na">
+            <span class="ba-tag">Een jaar later</span>
+            <img src="images/robotica-na.png" alt="Redesign van de Robotica 2030 app" loading="lazy">
+          </div>
+        </div>
+        <div class="cover fb-royal" id="rbCover">
+          <img src="images/robotica.png" alt="Schermen uit de Robotica 2030 app" loading="lazy" onerror="this.parentElement.classList.add('noimg')">
+          <div class="cover-fallback">
+            <span class="fb-title">Robotica 2030</span>
+            <span class="fb-sub">First version → redesign</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-meta">UX/UI · Redesign · Iteratie</span>
+          <h3>Robotica 2030</h3>
+          <p>Mijn allereerste creatieve project: een festivalapp voor een futuristisch festival waar elke ziekte geneesbaar is. Een jaar later heb ik hem volledig opnieuw ontworpen. Het verschil tussen die twee versies laat mijn ontwikkeling zien, zonder dat ik het hoef te zeggen.</p>
+          <div class="change-cols">
+            <div>
+              <h4>Wat veranderde in de UI</h4>
+              <ul>
+                <li>Duidelijkere visuele hiërarchie</li>
+                <li>Consistente componenten</li>
+                <li>Volwassener typografie</li>
+              </ul>
+            </div>
+            <div>
+              <h4>Wat veranderde in de UX</h4>
+              <ul>
+                <li>Simpelere navigatiestructuur</li>
+                <li>Logischer opgebouwde flows</li>
+                <li>Duidelijkere interacties</li>
+              </ul>
+            </div>
+          </div>
+          <p style="font-size:.9rem;opacity:.8"><strong>Wat ik leerde:</strong> mijn eerste ontwerp hoeft niet perfect te zijn. Belangrijker is dat elke volgende versie aantoonbaar beter wordt.</p>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">UI Design</span><span class="tag">Iteratie</span></div>
+          <a class="project-link" href="https://www.figma.com/proto/ZJxSObUgb1D22pdW9taUfo/viscom-herkasing?node-id=119-468" target="_blank" rel="noopener">Bekijk het prototype →</a>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="cover fb-red">
+          <img src="images/dutch-store.jpg" alt="Homepage van het The Dutch Store redesign" loading="lazy" onerror="this.parentElement.classList.add('noimg')">
+          <div class="cover-fallback">
+            <span class="fb-title">The Dutch Store</span>
+            <span class="fb-sub">Web design</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-meta">UX/UI · Web design · Duo project</span>
+          <h3>The Dutch Store</h3>
+          <p>Website volledig geredesigned samen met een medestudent: betere structuur, frisser design, betere gebruikerservaring.</p>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">Web design</span><span class="tag">Samenwerking</span></div>
+          <a class="project-link" href="https://www.figma.com/proto/qFHfFkkT6ASflJyaDLA5ay/VP-groep-project?node-id=123-1138" target="_blank" rel="noopener">Bekijk het prototype →</a>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="cover fb-emerald">
+          <img src="images/vcs.jpg" alt="Homepage van de VCS voetbalclub website" loading="lazy" onerror="this.parentElement.classList.add('noimg')">
+          <div class="cover-fallback">
+            <span class="fb-title">VCS</span>
+            <span class="fb-sub">Web design</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-meta">UX/UI · Web design · Redesign</span>
+          <h3>VCS Voetbalclub</h3>
+          <p>De drukke, onoverzichtelijke site van voetbalclub VCS uit Den Haag omgezet naar een rustig en duidelijk ontwerp voor een brede doelgroep.</p>
+          <div class="tags"><span class="tag">Figma</span><span class="tag">Web design</span><span class="tag">Toegankelijkheid</span></div>
+          <a class="project-link" href="https://www.figma.com/proto/g50zx5qZfkuDyayEY0OQxv/Website-hi-fi?node-id=1-2" target="_blank" rel="noopener">Bekijk het prototype →</a>
+        </div>
+      </article>
+
+      <article class="project reveal">
+        <div class="cover">
+          <img src="images/flyer.jpg" alt="Voor- en achterkant van de horren flyer" loading="lazy" onerror="this.parentElement.classList.add('noimg')">
+          <div class="cover-fallback">
+            <span class="fb-title">Horren flyer</span>
+            <span class="fb-sub">Print</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <span class="project-meta">Visual design · Print · Persoonlijk werk</span>
+          <h3>Flyer horren plaatsing</h3>
+          <p>Flyer voor mijn vader, die als hobby horren plaatst. Mijn eerste opdracht voor een echte "klant" buiten school om.</p>
+          <div class="tags"><span class="tag">Print design</span><span class="tag">Typografie</span></div>
+          <a class="project-link" href="https://www.figma.com/proto/OBb74uZsInW47hpWMqgovV/Untitled?node-id=0-1" target="_blank" rel="noopener">Bekijk de flyer →</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section id="maker">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Meer dan schermen</span>
+        <h2>Ook buiten <span class="accent">het scherm.</span></h2>
+      </div>
+    </div>
+    <p class="maker-intro reveal">Mijn interesse in design stopt niet bij een interface. Ik vind het leuk om ideeën fysiek tot leven te brengen en te experimenteren met 3D, elektronica en interactieve producten.</p>
+    <!-- Upload maker-3d.jpg, maker-physical.jpg of maker-interactive.jpg naar de map images/ in je repo
+         en de foto verschijnt vanzelf in de bijbehorende kaart. Bestaan ze niet, dan blijft de kaart tekst-only. -->
+    <div class="maker-grid">
+      <div class="maker-card reveal">
+        <span class="icon">🧊</span>
+        <h3>3D design</h3>
+        <p>Experimenteren met 3D modelling en productconcepten. Vormen bedenken, modelleren en printen.</p>
+        <img src="images/maker-3d.jpg" alt="3D design experiment" loading="lazy" style="display:none;border-radius:10px;border:1.5px solid var(--ink);margin-top:14px" onload="this.style.display='block'">
+      </div>
+      <div class="maker-card reveal">
+        <span class="icon">📦</span>
+        <h3>Physical design</h3>
+        <p>Van schets naar iets dat je vast kan houden. Prototypen met echte materialen in plaats van pixels.</p>
+        <img src="images/maker-physical.jpg" alt="Physical design prototype" loading="lazy" style="display:none;border-radius:10px;border:1.5px solid var(--ink);margin-top:14px" onload="this.style.display='block'">
+      </div>
+      <div class="maker-card reveal">
+        <span class="icon">⚡</span>
+        <h3>Interactive & electronics</h3>
+        <p>Experimenteren met elektronica en interactie: dingen die reageren als je erop drukt, draait of beweegt.</p>
+        <img src="images/maker-interactive.jpg" alt="Interactief elektronica experiment" loading="lazy" style="display:none;border-radius:10px;border:1.5px solid var(--ink);margin-top:14px" onload="this.style.display='block'">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="over">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <span class="eyebrow">Over mij</span>
+        <h2>Creatief sinds <span class="accent">dag één.</span></h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p class="big">Mijn hoofd staat eigenlijk <em>nooit stil</em>.</p>
+        <p>Ik vind het leuk om ideeën te bedenken, verschillende richtingen te verkennen en een concept steeds verder uit te werken. Een eerste idee hoeft van mij niet meteen goed te zijn: door te brainstormen, testen, feedback te krijgen en opnieuw te ontwerpen kom je vaak bij iets veel beters uit.</p>
+        <p>Mijn focus ligt bij UI/UX, maar mijn nieuwsgierigheid stopt niet bij een scherm. Ik ben ook graag bezig met 3D, elektronica en fysieke, interactieve producten. Ik ben op mijn best als ik iets kan bedenken, maken, testen en opnieuw verbeteren.</p>
+        <p>Buiten de opleiding game ik met vrienden, ga ik naar de gym, boulder ik en kijk ik films. Vaak met een notitie-app ernaast, want ideeën houden zich niet aan werktijden.</p>
+        <p><strong>Vanaf september 2026 zoek ik een UX/UI stage van 20 weken</strong> in de regio Den Haag, Rotterdam, Amsterdam, Utrecht of Leiden. Denk je dat ik bij jullie team pas? Ik hoor het graag.</p>
+      </div>
+      <div class="skill-list reveal">
+        <p class="skill-group">Primair</p>
+        <div class="skill"><span class="num">01</span><div><h3>UI/UX Design</h3><span>Figma · Wireframing · Hi-fi design · Design systems</span></div></div>
+        <div class="skill"><span class="num">02</span><div><h3>Prototyping</h3><span>Klikbare hi-fi prototypes in Figma</span></div></div>
+        <div class="skill"><span class="num">03</span><div><h3>UX Research</h3><span>Interviews · Persona's · User journeys · User testing</span></div></div>
+        <div class="skill"><span class="num">04</span><div><h3>Conceptontwikkeling</h3><span>Brainstormen · Ideation · Iteratie · Problem solving</span></div></div>
+        <p class="skill-group">Secundaire interesses</p>
+        <div class="sec-chips">
+          <span class="schip">3D Design</span><span class="schip">Physical Design</span><span class="schip">Electronics</span><span class="schip">Interactive projects</span>
+        </div>
+        <p class="skill-extra">Aanvullend: Photoshop · Canva · Final Cut Pro (basis) · HTML & CSS (basis)</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal" style="position:relative;z-index:2">
+    <span class="eyebrow">Contact</span>
+    <h2>Laten we praten.</h2>
+    <p>Op zoek naar een CMD-stagiair, wil je samenwerken of heb je gewoon een vraag? Stuur me gerust een bericht.</p>
+    <div class="hero-ctas">
+      <a class="btn btn-primary" href="mailto:yusuf-sen@outlook.com">yusuf-sen@outlook.com</a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/yusuf-sen-225344181" target="_blank" rel="noopener">LinkedIn →</a>
+    </div>
+  </div>
+  <span class="ghost-type" aria-hidden="true">Yusuf</span>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Yusuf Sen</span>
+    <span>Ontworpen en gebouwd door mijzelf</span>
+    <span>CMD · Den Haag</span>
+  </div>
+</footer>
+
+<script>
+// Roterend einde van de hero-zin
+const roles=["iets dat werkt.","een prototype.","een betere versie.","iets tastbaars."];
+const swap=document.getElementById("roleSwap");
+let i=0;
+const reduced=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+if(!reduced){
+  setInterval(()=>{
+    i=(i+1)%roles.length;
+    swap.style.opacity=0;
+    setTimeout(()=>{swap.textContent=roles[i];swap.style.opacity=1;},220);
+  },2800);
+  swap.style.transition="opacity .22s";
+}
+
+// Marquee verdubbelen voor naadloze loop
+const track=document.getElementById("marqueeTrack");
+track.innerHTML+=track.innerHTML;
+
+// Scroll reveal
+const io=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>io.observe(el));
+
+// Robotica: toon het voor/na blok alleen als BEIDE afbeeldingen bestaan,
+// en verberg dan de gewone cover
+(function(){
+  const pair=document.getElementById("baPair");
+  const cover=document.getElementById("rbCover");
+  const voor=new Image(), na=new Image();
+  let loaded=0;
+  function check(){ loaded++; if(loaded===2){ pair.style.display=""; cover.style.display="none"; } }
+  voor.onload=check; na.onload=check;
+  voor.src="images/robotica-voor.png"; na.src="images/robotica-na.png";
+})();
+
+// Custom cursor
+const cur=document.getElementById("cursor");
+if(window.matchMedia("(hover:hover) and (pointer:fine)").matches && !reduced){
+  document.addEventListener("mousemove",e=>{
+    cur.style.left=e.clientX+"px";cur.style.top=e.clientY+"px";
+  });
+  document.querySelectorAll("a,button,.skill,.maker-card").forEach(el=>{
+    el.addEventListener("mouseenter",()=>cur.classList.add("grow"));
+    el.addEventListener("mouseleave",()=>cur.classList.remove("grow"));
+  });
+}
+</script>
+</body>
+</html>
